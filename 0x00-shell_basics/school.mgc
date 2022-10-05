@@ -1,2 +1,2 @@
-0 SCHOOL School data
-file --mime-type school.mgc *
+0       SCHOOL               School data
+!:mime school.mgc 
