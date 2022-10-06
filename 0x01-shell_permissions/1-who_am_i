@@ -1,2 +1,2 @@
-#!/bin/bash
-logname
+#!/in/bash
+whoami
