@@ -1,2 +1,2 @@
 #!/bin/bash
-$(expr 128 + $TRUEKNOWlEDGE)
+$(expr $TRUEKNOWlEDGE + 128)
