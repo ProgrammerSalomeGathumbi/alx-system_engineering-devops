@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l |rev| cut -d " " -f 1 |rev 
+paste - - | cut -f1
