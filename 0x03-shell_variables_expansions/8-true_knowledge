@@ -1,2 +1,2 @@
 #!/bin/bash
-$(expr $TRUEKNOWlEDGE + 128)
+sum=$(expr 128 + "$TRUEKNOWlEDGE")
