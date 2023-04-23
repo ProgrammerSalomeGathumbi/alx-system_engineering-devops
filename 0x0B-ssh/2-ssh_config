@@ -1,5 +1,5 @@
 #SSH client configuration must be configured to use the private key ~/.ssh/school   
 #SSH client configuration must be configured to refuse to authenticate using a password    
-Hostname 34.201.165.144
+Hostname 100.25.190.6
 IdentityFile  ~/.ssh/school
 PasswordAuthentication no
