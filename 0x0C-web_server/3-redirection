@@ -3,5 +3,5 @@
 apt  -y update
 apt -y install nginx
 echo 'Hello World!' > /var/www/html/index.html
-sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+sudo sed -i 's/location \/ {/location \/redirect_me {\n\treturn 301 https:\/\/www.youtube.com;\n}\n\nlocation \/ {\n\troot \/var\/www\/html;\n\tindex index.html;\n}/g' /etc/nginx/sites-available/default
 service nginx restart
