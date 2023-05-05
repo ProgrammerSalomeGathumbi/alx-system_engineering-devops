@@ -35,7 +35,8 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 frontend http-in
         bind *:80
-        default_backend webservers
+        bind *:443 ssl crt /etc/letsencrypt/live/www.programmersalomegathumbi.tech/all.pem
+	default_backend webservers
 backend webservers
         balance roundrobin
         server 165118-web-01 100.24.255.168:80 check
