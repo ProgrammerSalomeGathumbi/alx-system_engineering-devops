@@ -1,24 +1,27 @@
 #!/usr/bin/python3
 """
-a recursive function that queries the Reddit API
+queries the Reddit API and prints the titles of the first 10 hot posts
+listed for a given subreddit
 """
+
 import requests
 
 
 def recurse(subreddit, hot_list=[], after=None, count=0):
     """
-    returns the titles of all hot articles for a given subreddit.
+    list containing the titles of all hot articles
+    in the subreddit
     """
-    url = 'http://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    headers = {'User-Agent': 'tenPosts/0.01 (by GamerG_K)'}
-    params = {'limit': 10, 'after': after, 'count': count}
-    request = requests.get(url, headers=headers, params=params,
-                           allow_redirects=False)
-    if request.status_code == 200:
-        posts = request.json().get('data').get('children')
-        for post in posts:
-            title = post.get('data').get('title')
-            hot_list.append(title)
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    header = {'User-Agent': 'topTen/0.0.1(by /u/GamerG_K)'}
+    request = requests.get(url, headers=header, allow_redirects=False)
+    try:
+        posts = request.json().get("data").get("children")
+
+        if request.status_code == 200:
+            for post in posts:
+                title = post.get('data').get('title')
+                hot_list.append(title)
         after = posts.get('data').get('after')
         count += len(posts)
         if after is not None:
@@ -26,5 +29,5 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
                            count=count)
         else:
             return hot_list
-    else:
-        return None
+    except Exception:
+        print(None)
