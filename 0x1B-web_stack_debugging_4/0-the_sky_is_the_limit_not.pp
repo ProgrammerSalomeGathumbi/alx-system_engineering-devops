@@ -2,8 +2,10 @@
 exec { 'fix web-server':
   command => "sed -i 's/15/4096/' /etc/default/nginx",
   path    => '/usr/local/bin/:/bin/'
+  notify  => Exec['restart nginx']
 }
 exec { 'restart nginx':
-  command => 'service nginx restart',
-  path    => '/etc/init.d'
+  command     => 'nginx restart',
+  refreshonly => 'true'
+  path        => '/etc/init.d'
 }
