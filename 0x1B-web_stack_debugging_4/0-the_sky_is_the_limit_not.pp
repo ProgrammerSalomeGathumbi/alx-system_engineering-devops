@@ -4,6 +4,6 @@ exec { 'fix web-server':
   path    => '/usr/local/bin/:/bin/'
 }
 exec { 'restart nginx':
-  command => 'sudo service nginx restart',
+  command => 'service nginx restart',
   path    => '/etc/init.d'
 }
